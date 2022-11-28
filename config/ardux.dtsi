@@ -253,9 +253,9 @@
 		combo_semi        { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_T KEY_O>; bindings = <&kp SEMI>; };
 		combo_colon       { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_R KEY_O>; bindings = <&kp COLON>; };
 		
-		combo_seven { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_A KEY_R>; bindings = <&kp N7>; };
-		combo_eight { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_R KEY_T>; bindings = <&kp N8>; };
-		combo_nine  { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_E KEY_N>; bindings = <&kp N9>; };
+		combo_eight { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_A KEY_R>; bindings = <&kp N8>; };
+		combo_seven { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_R KEY_T>; bindings = <&kp N7>; };
+		combo_dot  { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_E KEY_N>; bindings = <&kp PERIOD>; };
 		combo_zero  { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_N KEY_I>; bindings = <&kp N0>; };
 
 		/*****************************************
@@ -273,6 +273,8 @@
 		combo_single_quote { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_3>; key-positions = <KEY_A KEY_N KEY_I>; bindings = <&kp SQT>; };
 		combo_double_quote { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_3>; key-positions = <KEY_A KEY_I KEY_O>; bindings = <&kp DQT>; };
 		combo_qmark 	   { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_3>; key-positions = <KEY_A KEY_T KEY_O>; bindings = <&kp QMARK>; };
+		
+		combo_nine 	   { layers = <LAYER_ID_NUMBERS>; timeout-ms = <TIMEOUT_COMBO_3>; key-positions = <KEY_A KEY_R KEY_T>; bindings = <&kp N9>; };
 		
 		/*****************************************
 		 * 4 key combos
@@ -463,12 +465,12 @@
 		};
 		#else
 		base {
-			label = "ARDUX";
+			label = "Base";
 			bindings = <
 				LEADING_NONES
-				&layer_numbers_kp LAYER_ID_NUMBERS ARDUX_BASE_S        &kp ARDUX_BASE_T     &kp ARDUX_BASE_R     &layer_parentheticals_kp LAYER_ID_PARENTHETICALS ARDUX_BASE_A
+				&layer_custom_kp LAYER_ID_CUSTOM ARDUX_BASE_S        &kp ARDUX_BASE_T     &kp ARDUX_BASE_R     &layer_parentheticals_kp LAYER_ID_PARENTHETICALS ARDUX_BASE_A
 				MIDDLE_NONES
-				&layer_custom_kp LAYER_ID_CUSTOM ARDUX_BASE_O          &kp ARDUX_BASE_I     &kp ARDUX_BASE_Y     &layer_symbols_kp LAYER_ID_SYMBOLS ARDUX_BASE_E
+				&layer_numbers_kp LAYER_ID_NUMBERS ARDUX_BASE_O          &kp ARDUX_BASE_I     &kp ARDUX_BASE_Y     &layer_symbols_kp LAYER_ID_SYMBOLS ARDUX_BASE_E
 				TRAILING_NONES
 				#if defined CUSTOM_THUMB
 				CUSTOM_THUMB
@@ -477,17 +479,17 @@
 		};
 		#endif
 		numbers {
-			label = "Number";
+			label = "Numbers";
 			bindings = <
 				LEADING_NONES
-				&mo LAYER_ID_NUMBERS                        &kp N3    &kp N2    &kp N1
+				&none                       		    &kp N4    &kp N5    &kp N6
 				MIDDLE_NONES
-				&none                                       &kp N6    &kp N5    &kp N4
+				&mo LAYER_ID_NUMBERS			    &kp N1    &kp N2    &kp N3
 				TRAILING_NONES
 			>;
 		};
 		symbols {
-			label = "Symbol";
+			label = "Symbols";
 			bindings = <
 				LEADING_NONES
 				&kp GRAVE                                   &kp SEMI  &kp BSLH  &kp EXCL
@@ -497,7 +499,7 @@
 			>;
 		};
 		parentheticals {
-			label = "Paren";
+			label = "Brackets";
 			bindings = <
 				LEADING_NONES
 				&kp LBRC                                    &kp LPAR  &kp RPAR  &mo LAYER_ID_PARENTHETICALS
@@ -507,7 +509,7 @@
 			>;
 		};
 		navigation {
-			label = "Nav";
+			label = "Navigation";
 			bindings = <
 				LEADING_NONES
 				&kp PG_UP                                   &kp HOME  &kp UP    &kp END
@@ -517,7 +519,7 @@
 			>;
 		};
 		bt {
-			label = "BT";
+			label = "Bluetooth";
 			bindings = <
 				LEADING_NONES
 				ARDUX_BT_TOP    &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0
